@@ -18,6 +18,16 @@ main{padding:54px 0 80px}
 .article p,.article li{color:var(--text)}
 .article ul,.article ol{padding-left:24px}
 .note{margin:30px 0;padding:22px 24px;background:var(--pale);border:1px solid var(--line);border-radius:16px}
+.pr-label{margin:0 0 26px;padding:10px 14px;background:#f7f8fa;border:1px solid #e5e9ee;border-radius:10px;color:#5d6d7d;font-size:13px}
+.pr-label strong{display:inline-block;margin-right:7px;color:#fff;background:#657789;border-radius:5px;padding:1px 8px}
+.affiliate-box{margin:34px 0;padding:26px;background:#fff8e8;border:1px solid #f2d697;border-radius:18px;text-align:center}
+.affiliate-box p{margin:7px 0 17px}
+.affiliate-button{display:inline-block;padding:13px 22px;border-radius:999px;background:#bf0000;color:#fff!important;font-weight:900;line-height:1.5}
+.affiliate-button:hover{background:#980000}
+.product-card{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:center;margin:22px 0 38px;padding:20px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.product-card img{display:block;width:100%;height:auto;border-radius:12px}
+.product-card strong{display:block;font-size:18px;line-height:1.6}
+.product-card p{margin:7px 0 14px;font-size:14px}
 .cta{margin-top:54px;padding:32px;background:var(--navy);color:#fff;border-radius:22px;text-align:center}
 .cta p{color:#d9ecff}.cta a{display:inline-block;margin:7px;padding:12px 20px;border-radius:999px;background:#fff;font-weight:900}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
@@ -26,4 +36,4 @@ main{padding:54px 0 80px}
 .tag{font-size:12px;color:var(--blue);font-weight:900}
 .related{margin-top:50px;padding-top:28px;border-top:1px solid var(--line)}
 footer{border-top:1px solid #e8eff6;padding:30px 0;text-align:center;color:#6d7f91;font-size:13px}
-@media(max-width:720px){nav{display:none}.cards{grid-template-columns:1fr}.hero{padding:48px 0 38px}}
+@media(max-width:720px){nav{display:none}.cards{grid-template-columns:1fr}.hero{padding:48px 0 38px}.product-card{grid-template-columns:110px 1fr;gap:14px;padding:14px}.product-card .affiliate-button{padding:10px 14px;font-size:13px}}
