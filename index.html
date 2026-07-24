@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ふるサポ埼玉｜ふるさと納税 返礼品登録サポート</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Maru Gothic ProN","Yu Gothic","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;color:#071b33;background:#fff}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:auto;padding:0 28px}
+
+header{height:76px;border-bottom:1px solid #edf2f7;background:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{font-weight:950;font-size:22px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.logo:before{content:"";width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#086fe0,#64d7ff)}
+.menu{display:flex;gap:32px;font-size:14px;font-weight:800;color:#10233b}
+.navBtns{display:flex;gap:10px}
+.navBtns a{padding:12px 18px;border-radius:999px;font-weight:900;font-size:14px}
+.navLine{background:#086fe0;color:white}.navDiag{border:1px solid #cfe0f0;color:#086fe0}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff 0%,#f5fbff 55%,#dff5ff 100%);padding:82px 0 64px}
+.hero:after{content:"";position:absolute;right:-120px;bottom:-170px;width:620px;height:420px;background:#cceeff;border-radius:50%;opacity:.55}
+.grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr .9fr;gap:64px;align-items:center}
+
+.badge{display:inline-flex;gap:9px;align-items:center;background:#edf8ff;color:#0874d8;border:1px solid #d2ecff;border-radius:999px;padding:9px 15px;font-size:14px;font-weight:900;margin-bottom:28px}
+.badge:before{content:"";width:9px;height:9px;border-radius:50%;background:#0874d8}
+
+h1{font-size:clamp(46px,5vw,68px);line-height:1.12;letter-spacing:-.07em;margin:0 0 26px;font-weight:950}
+h1 span{color:#0874d8}
+.lead{font-size:17px;line-height:2;color:#3c5066;font-weight:650;margin:0 0 32px;max-width:620px}
+
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{min-width:174px;height:56px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:950;border:1.5px solid transparent;box-shadow:0 14px 28px #0b559214}
+.line{background:#0874d8;color:#fff}
+.diag{background:#fff;color:#0874d8;border-color:#badcf8}
+.apply{background:#071b33;color:#fff}
+
+.panel{background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border:1px solid #dceaf6;border-radius:32px;padding:30px;box-shadow:0 34px 90px #0a5c9c17}
+.panelHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.panelHead b{font-size:20px;font-weight:950}.pill{background:#edf8ff;color:#0874d8;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:950}
+
+.row{display:grid;grid-template-columns:52px 1fr 44px;gap:16px;align-items:center;background:#fff;border:1px solid #e2edf7;border-radius:22px;padding:18px;margin-bottom:14px}
+.ico{width:48px;height:48px;border-radius:15px;background:#edf8ff;display:grid;place-items:center;color:#0874d8;font-size:22px;font-weight:900}
+.ico.green{background:#ecfbf3;color:#12a767}.ico.purple{background:#f2efff;color:#6557ff}
+.rowTitle{font-weight:950;font-size:15px;margin-bottom:9px}
+.bar{height:7px;background:#e5f1fb;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#0874d8,#00a7d8);border-radius:999px}
+.percent{font-weight:900;font-size:14px}
+
+.darkCard{margin-top:18px;background:linear-gradient(135deg,#071b33,#0d2a4c);border-radius:22px;padding:26px;color:#fff;position:relative;overflow:hidden}
+.darkCard:after{content:"";position:absolute;right:24px;bottom:20px;width:80px;height:80px;border:3px solid rgba(255,255,255,.12);border-radius:22px}
+.darkCard small{font-weight:800;color:#cfeaff}.darkCard h3{font-size:26px;line-height:1.35;margin:8px 0;color:#78dcff}.darkCard p{margin:0;color:#eaf7ff;font-weight:650}
+
+.merits{position:relative;z-index:2;margin-top:-28px}
+.meritBox{background:white;border:1px solid #e2edf7;border-radius:24px;box-shadow:0 24px 70px #0a5c9c12;display:grid;grid-template-columns:repeat(4,1fr);padding:24px}
+.merit{display:flex;gap:14px;align-items:center;padding:0 20px;border-right:1px solid #e3edf6}
+.merit:last-child{border-right:0}
+.meritIcon{width:54px;height:54px;border-radius:18px;background:#edf8ff;color:#0874d8;display:grid;place-items:center;font-size:22px;font-weight:950}
+.merit b{display:block;color:#0874d8;font-size:16px}.merit p{margin:3px 0 0;font-size:13px;line-height:1.6;color:#52677c;font-weight:650}
+
+section{padding:78px 0}
+.center{text-align:center}
+.label{font-size:12px;letter-spacing:.16em;color:#0874d8;font-weight:950;margin-bottom:8px}
+h2{font-size:clamp(30px,3vw,40px);letter-spacing:-.05em;margin:0 0 12px}
+.sub{max-width:720px;margin:auto;color:#53677c;font-weight:650;line-height:1.9}
+
+.cards{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:white;border:1px solid #e2edf7;border-radius:24px;padding:28px;text-align:left;box-shadow:0 16px 42px #0a5c9c0c}
+.card h3{margin:0 0 10px;font-size:19px}.card p{margin:0;color:#53677c;line-height:1.8;font-weight:650}
+
+.final{background:linear-gradient(135deg,#0874d8,#00a7d8);color:white;border-radius:30px;padding:48px 24px;text-align:center}
+.final h2{color:white}.final p{color:#eaf8ff;font-weight:700}
+.finalBtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.finalBtns a{background:white;color:#0874d8}
+
+footer{padding:32px 0;text-align:center;color:#6a7b8d;border-top:1px solid #edf2f7}
+
+@media(max-width:900px){
+  .menu{display:none}.navDiag{display:none}
+  .grid,.cards,.meritBox{grid-template-columns:1fr}
+  .hero{padding:54px 0}
+  .ctas .btn{width:100%}
+  .merit{border-right:0;border-bottom:1px solid #e3edf6;padding:16px 0}
+  .merit:last-child{border-bottom:0}
+  .row{grid-template-columns:48px 1fr}.percent{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">ふるサポ埼玉</div>
+    <nav class="menu">
+      <a href="#service">特徴</a>
+      <a href="#support">サポート内容</a>
+      <a href="#flow">流れ</a>
+      <a href="#faq">よくある質問</a>
+    </nav>
+    <div class="navBtns">
+      <a class="navLine" href="https://lin.ee/U7jv3Tf">LINE相談</a>
+      <a class="navDiag" href="#diagnosis">かんたん診断</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="badge">個人事業主・小規模事業者向け</div>
+      <h1 class="heroTitle">
+  <span class="titleSmall">ふるさと納税</span>
+  <span class="titleMain">返礼品登録</span>
+  <span class="titleEnd">をスマートに。</span>
+</h1>
+      <p class="lead">書類が難しい。何を準備すればいいかわからない。<br>商品説明や画像の準備に時間がかかる。<br>そんな事業者さまの掲載準備を、わかりやすく伴走します。</p>
+      <div class="ctas">
+        <a class="btn line" href="https://lin.ee/U7jv3Tf">LINEで無料相談</a>
+        <a class="btn diag" href="#diagnosis">かんたん診断</a>
+        <a class="btn apply" href="application.html">返礼品申込サポート</a>
+      </div>
+    </div>
+
+    
+<div class="formPanel" id="diagnosis">
+  <div class="formHead">
+    <div>
+      <span>無料</span>
+      <h2>かんたん診断</h2>
+      <p>約30秒で、返礼品登録の可能性を確認できます。</p>
+    </div>
+  </div>
+  <iframe src="diagnosis.html" title="ふるサポかんたん診断" loading="lazy"></iframe>
+</div>
+</div>
+  </div>
+</section>
+
+<div class="wrap merits">
+  <div class="meritBox">
+    <div class="merit"><div class="meritIcon">¥0</div><div><b>相談無料</b><p>まずは無料で相談できます</p></div></div>
+    <div class="merit"><div class="meritIcon">💬</div><div><b>LINEで完結</b><p>やり取りはLINEでスムーズに</p></div></div>
+    <div class="merit"><div class="meritIcon">人</div><div><b>小規模事業者対応</b><p>個人・小規模事業者をサポート</p></div></div>
+    <div class="merit"><div class="meritIcon">◎</div><div><b>県外相談OK</b><p>埼玉県以外の方も相談できます</p></div></div>
+  </div>
+</div>
+
+<section id="service">
+  <div class="wrap center">
+    <div class="label">SERVICE</div>
+    <h2>こんなお悩みありませんか？</h2>
+    <p class="sub">ふるさと納税は、商品が良くても「書類」「説明文」「画像」「登録情報」で止まりがちです。</p>
+    <div class="cards">
+      <div class="card"><h3>何から始めればいいかわからない</h3><p>返礼品登録に必要な情報を整理し、次にやることを明確にします。</p></div>
+      <div class="card"><h3>商品説明がうまく書けない</h3><p>魅力が伝わる説明文、内容量、発送情報などを整えます。</p></div>
+      <div class="card"><h3>画像や掲載準備が大変</h3><p>掲載に必要な写真や見せ方を整理し、スムーズに進めます。</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="price">
+  <div class="wrap center">
+    <div class="label">PRICE</div>
+    <h2>料金の目安</h2>
+    <p class="sub">まずは無料で診断。必要な場合のみ、登録準備サポートへ進めます。</p>
+
+    <div class="priceGrid">
+      <div class="priceCard light">
+        <div class="priceTag">入口</div>
+        <h3>かんたん診断</h3>
+        <div class="priceMain">無料</div>
+        <p>返礼品にできる可能性や、確認すべきポイントを整理します。</p>
+        <a class="priceBtn outline" href="#diagnosis">かんたん診断をする</a>
+      </div>
+
+      <div class="priceCard main">
+        <div class="priceTag">おすすめ</div>
+        <h3>返礼品申込サポート</h3>
+        <div class="priceMain">100,000円</div>
+        <p>商品企画、申請情報の整理、商品説明、さとふるを含む掲載完了までフルサポートします。</p>
+        <a class="priceBtn filled" href="application.html">返礼品申込サポートへ</a>
+      </div>
+
+      <div class="priceCard light">
+        <div class="priceTag">継続</div>
+        <h3>掲載完了まで伴走</h3>
+        <div class="priceMain">月額3,900円〜</div>
+        <p>掲載後の追加相談・商品追加・運用改善などを継続して伴走します。</p>
+        <a class="priceBtn outline" href="https://lin.ee/U7jv3Tf">LINEで相談する</a>
+      </div>
+    </div>
+
+    <p class="priceNote">※内容・商品数・自治体の進め方により変動する場合があります。正式料金は相談後にご案内します。</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="final">
+      <h2>返礼品登録を、もっとスムーズに。</h2>
+      <p>まずはLINE相談、かんたん診断、または申し込みからお選びください。</p>
+      <div class="finalBtns">
+        <a class="btn" href="https://lin.ee/U7jv3Tf">LINEで無料相談</a>
+        <a class="btn" href="#diagnosis">かんたん診断</a>
+        <a class="btn" href="application.html">返礼品申込サポート</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© ふるサポ埼玉｜ふるさと納税 返礼品登録サポート</footer>
+</body>
+</html>
+
+<style>
+/* font size adjustment */
+.logo{font-size:20px}
+.menu{font-size:13px}
+.badge{font-size:13px}
+h1{
+  font-size:clamp(38px,4.2vw,56px);
+  line-height:1.18;
+  letter-spacing:-.055em;
+}
+.lead{
+  font-size:15.5px;
+  line-height:1.95;
+}
+.btn{
+  min-width:156px;
+  height:52px;
+  font-size:14px;
+  border-radius:13px;
+}
+.panelHead b{font-size:18px}
+.rowTitle{font-size:14px}
+.percent{font-size:13px}
+.darkCard h3{font-size:23px}
+.darkCard p{font-size:14px}
+h2{font-size:clamp(26px,2.6vw,34px)}
+.sub{font-size:14.5px}
+.card h3{font-size:17px}
+.card p{font-size:13.5px}
+.merit b{font-size:15px}
+.merit p{font-size:12.5px}
+</style>
+
+<style>
+.heroTitle{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin:0 0 28px;
+  line-height:1;
+  letter-spacing:-.035em;
+}
+.heroTitle .titleSmall{
+  color:#071b33;
+  font-size:clamp(34px,3.7vw,50px);
+  font-weight:900;
+}
+.heroTitle .titleMain{
+  color:#0874d8;
+  font-size:clamp(46px,5vw,64px);
+  font-weight:950;
+  letter-spacing:-.045em;
+}
+.heroTitle .titleEnd{
+  color:#071b33;
+  font-size:clamp(34px,3.7vw,50px);
+  font-weight:900;
+}
+@media(max-width:900px){
+  .heroTitle{gap:8px}
+  .heroTitle .titleSmall,
+  .heroTitle .titleEnd{font-size:34px}
+  .heroTitle .titleMain{font-size:44px}
+}
+</style>
+
+<style>
+#price{
+  background:#f6fbff;
+}
+.priceGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:36px;
+}
+.priceCard{
+  background:white;
+  border:1px solid #e0edf8;
+  border-radius:26px;
+  padding:30px;
+  text-align:left;
+  box-shadow:0 18px 48px #0a5c9c10;
+}
+.priceCard.main{
+  border:2px solid #0874d8;
+  transform:translateY(-8px);
+  box-shadow:0 26px 64px #0874d820;
+}
+.priceTag{
+  display:inline-flex;
+  background:#edf8ff;
+  color:#0874d8;
+  border-radius:999px;
+  padding:6px 12px;
+  font-size:12px;
+  font-weight:950;
+  margin-bottom:16px;
+}
+.priceCard.main .priceTag{
+  background:#0874d8;
+  color:white;
+}
+.priceCard h3{
+  margin:0 0 14px;
+  font-size:19px;
+}
+.priceMain{
+  font-size:30px;
+  font-weight:950;
+  color:#0874d8;
+  margin-bottom:14px;
+  letter-spacing:-.04em;
+}
+.priceCard p{
+  color:#53677c;
+  font-size:14px;
+  font-weight:650;
+  line-height:1.8;
+  min-height:76px;
+}
+.priceBtn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  height:50px;
+  border-radius:13px;
+  font-size:14px;
+  font-weight:950;
+  margin-top:12px;
+}
+.priceBtn.filled{
+  background:#0874d8;
+  color:white;
+}
+.priceBtn.outline{
+  border:1.5px solid #bcdcf6;
+  color:#0874d8;
+  background:white;
+}
+.priceNote{
+  color:#6a7b8d;
+  font-size:12.5px;
+  margin-top:18px;
+}
+@media(max-width:900px){
+  .priceGrid{grid-template-columns:1fr}
+  .priceCard.main{transform:none}
+}
+</style>
+
+<style>
+/* Replace emoji icons with clean line icons */
+.ico{
+  position:relative;
+  font-size:0!important;
+}
+.giftIcon::before{
+  content:"";
+  width:24px;
+  height:20px;
+  border:2.5px solid currentColor;
+  border-radius:5px;
+  position:absolute;
+  bottom:13px;
+  left:50%;
+  transform:translateX(-50%);
+}
+.giftIcon::after{
+  content:"";
+  width:30px;
+  height:8px;
+  border:2.5px solid currentColor;
+  border-radius:5px;
+  position:absolute;
+  top:13px;
+  left:50%;
+  transform:translateX(-50%);
+}
+.giftIcon span{display:none}
+.giftIcon{
+  background:
+    linear-gradient(currentColor,currentColor) center 18px/2.5px 26px no-repeat,
+    #edf8ff;
+}
+
+.docIcon::before{
+  content:"";
+  width:24px;
+  height:30px;
+  border:2.5px solid currentColor;
+  border-radius:5px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+.docIcon::after{
+  content:"";
+  width:14px;
+  height:2.5px;
+  background:currentColor;
+  box-shadow:0 7px 0 currentColor,0 14px 0 currentColor;
+  position:absolute;
+  left:50%;
+  top:22px;
+  transform:translateX(-50%);
+  border-radius:999px;
+}
+
+.photoIcon::before{
+  content:"";
+  width:28px;
+  height:22px;
+  border:2.5px solid currentColor;
+  border-radius:6px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+.photoIcon::after{
+  content:"";
+  width:9px;
+  height:9px;
+  border:2.5px solid currentColor;
+  border-radius:50%;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-35%);
+}
+</style>
+
+<style>
+.formPanel{
+  background:rgba(255,255,255,.9);
+  border:1px solid #dceaf6;
+  border-radius:30px;
+  padding:24px;
+  box-shadow:0 34px 90px #0a5c9c17;
+}
+.formHead{
+  margin-bottom:16px;
+}
+.formHead span{
+  display:inline-flex;
+  background:#edf8ff;
+  color:#0874d8;
+  border-radius:999px;
+  padding:6px 12px;
+  font-size:12px;
+  font-weight:950;
+  margin-bottom:8px;
+}
+.formHead h2{
+  margin:0 0 4px;
+  font-size:26px;
+}
+.formHead p{
+  margin:0;
+  color:#53677c;
+  font-size:13px;
+  font-weight:650;
+}
+.formPanel iframe{
+  width:100%;
+  height:520px;
+  border:0;
+  border-radius:20px;
+  background:#fff;
+}
+@media(max-width:900px){
+  .formPanel iframe{height:620px}
+}
+</style>

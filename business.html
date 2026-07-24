@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>返礼品登録｜事業者情報入力</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: #f6f3ef;
+      color: #1f2933;
+      line-height: 1.8;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #edf3fb);
+      border-radius: 24px;
+      padding: 34px 26px;
+      margin-bottom: 24px;
+      border: 1px solid #e5e0d8;
+      box-shadow: 0 12px 30px rgba(31, 58, 95, 0.08);
+    }
+
+    .label {
+      display: inline-block;
+      background: #1f3a5f;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      color: #1f3a5f;
+      font-size: 30px;
+      line-height: 1.4;
+    }
+
+    .lead {
+      color: #6b7280;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .section {
+      background: white;
+      border: 1px solid #e5e0d8;
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 8px 20px rgba(31, 41, 51, 0.04);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #e5e0d8;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .num {
+      width: 30px;
+      height: 30px;
+      background: #1f3a5f;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      color: #1f3a5f;
+      font-size: 19px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .required {
+      color: #b91c1c;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #d7d2ca;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      background: white;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #1f3a5f;
+      box-shadow: 0 0 0 4px rgba(31, 58, 95, 0.12);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .note {
+      background: #fffaf2;
+      border: 1px solid #ead8bd;
+      color: #6b4e25;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    
+    button {
+      border: none;
+      background: linear-gradient(135deg, #ff9f43, #ff7b54);
+      color: white;
+      width: 100%;
+      max-width: 320px;
+      padding: 18px 28px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 12px 24px rgba(255,123,84,0.28);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 28px rgba(255,123,84,0.36);
+    }
+.actions {
+      text-align: center;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #6b7280;
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .section {
+        padding: 22px 18px;
+      }
+
+      
+    button {
+      border: none;
+      background: linear-gradient(135deg, #ff9f43, #ff7b54);
+      color: white;
+      width: 100%;
+      max-width: 320px;
+      padding: 18px 28px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 12px 24px rgba(255,123,84,0.28);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 28px rgba(255,123,84,0.36);
+    }
+}
+
+    
+
+
+    
+
+
+    
+
+  
+.progress-fill.complete {
+  background: linear-gradient(135deg, #34d399, #10b981);
+}
+
+.progress-label {
+  text-align: right;
+  font-size: 14px;
+  font-weight: 700;
+  color: #555;
+}
+
+
+</style>
+
+<style>
+/* business_PROGRESS_LABEL_VISIBLE_FIX */
+.progress-label {
+  display: block !important;
+  width: 100% !important;
+  margin-top: 10px !important;
+  text-align: right !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #5c3d1e !important;
+  line-height: 1.4 !important;
+  overflow: visible !important;
+}
+</style>
+
+
+<style>
+/* business_VISIBLE_PROGRESS_STATUS_FIX */
+#progressStatusVisible {
+  display: block !important;
+  margin-top: 10px !important;
+  text-align: right !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #5c3d1e !important;
+  line-height: 1.5 !important;
+}
+</style>
+
+
+<style id="furusapo-business-ui-fix">
+  body {
+    font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+    background: #fff8f1;
+  }
+
+  .container, .wrap, main {
+    max-width: 760px;
+  }
+
+  header, .header, .hero {
+    text-align: center;
+    padding: 22px 18px 14px;
+  }
+
+  h1 {
+    font-size: clamp(24px, 6vw, 34px);
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    margin: 0 0 8px;
+    color: #3a2a1f;
+  }
+
+  .lead, .description, header p, .header p, .hero p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #7a6555;
+    margin: 0 auto;
+    max-width: 560px;
+  }
+
+  form {
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 14px 40px rgba(210, 124, 45, 0.14);
+    border: 1px solid #ffe1c2;
+  }
+
+  .card, .section, fieldset {
+    background: #fffaf5;
+    border: 1px solid #ffe0bf;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 22px rgba(180, 110, 40, 0.08);
+  }
+
+  label {
+    font-weight: 700;
+    color: #4a3427;
+    margin-bottom: 7px;
+    display: block;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    border: 1.5px solid #f3c7a0;
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 16px;
+    background: #fff;
+    color: #3a2a1f;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #ff9a3d;
+    background: #fffdf9;
+    box-shadow: 0 0 0 4px rgba(255, 154, 61, 0.18);
+  }
+
+  button[type="submit"], .submit-btn {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 15px 20px;
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #ff9a3d, #ff6b35);
+    box-shadow: 0 10px 24px rgba(255, 112, 45, 0.32);
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover, .submit-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+
+    header, .header, .hero {
+      padding: 16px 10px 10px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    .lead, .description, header p, .header p, .hero p {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    form {
+      padding: 16px;
+      border-radius: 20px;
+    }
+
+    .card, .section, fieldset {
+      padding: 14px;
+      border-radius: 18px;
+      margin-bottom: 14px;
+    }
+
+    input, textarea, select {
+      padding: 12px;
+      font-size: 16px;
+    }
+  }
+</style>
+
+
+<style id="furusapo-titlebox-compact">
+  header, .header, .hero {
+    padding: 12px 12px 8px !important;
+    margin-bottom: 10px !important;
+    border-radius: 16px !important;
+  }
+
+  h1 {
+    font-size: clamp(21px, 5vw, 28px) !important;
+    margin: 0 0 4px !important;
+    line-height: 1.2 !important;
+  }
+
+  .lead, .description, header p, .header p, .hero p {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+    margin: 0 auto !important;
+  }
+
+  @media (max-width: 600px) {
+    header, .header, .hero {
+      padding: 10px 8px 6px !important;
+      margin-bottom: 8px !important;
+    }
+
+    h1 {
+      font-size: 21px !important;
+    }
+  }
+</style>
+
+
+<style id="furusapo-orange-buttons">
+  button,
+  input[type="button"],
+  input[type="submit"],
+  .btn,
+  .test-btn,
+  .sample-btn {
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 13px 20px !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    background: linear-gradient(135deg, #ffb15c 0%, #ff8a3d 48%, #ff6b35 100%) !important;
+    box-shadow: 0 9px 22px rgba(255, 120, 48, 0.28) !important;
+    cursor: pointer !important;
+    transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease !important;
+  }
+
+  button:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover,
+  .btn:hover,
+  .test-btn:hover,
+  .sample-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 12px 26px rgba(255, 120, 48, 0.36) !important;
+    opacity: .96 !important;
+  }
+
+  button:active,
+  input[type="button"]:active,
+  input[type="submit"]:active,
+  .btn:active,
+  .test-btn:active,
+  .sample-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 6px 16px rgba(255, 120, 48, 0.25) !important;
+  }
+</style>
+
+<style id="furusapo-layout-clean">
+  body {
+    background: #fff8f1 !important;
+    overflow-x: hidden !important;
+  }
+
+  header,
+  .header,
+  .hero {
+    max-width: 760px !important;
+    margin: 12px auto 18px !important;
+    padding: 20px 18px 18px !important;
+    border-radius: 22px !important;
+  }
+
+  h1 {
+    font-size: clamp(26px, 4vw, 38px) !important;
+    line-height: 1.25 !important;
+    margin: 8px 0 10px !important;
+  }
+
+  form,
+  main,
+  .container,
+  .wrap {
+    max-width: 760px !important;
+    width: calc(100% - 32px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  form {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .card,
+  .section,
+  fieldset {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto 28px !important;
+    padding: 28px !important;
+    border-radius: 24px !important;
+  }
+
+  .test-box,
+  .test-area,
+  [class*="test"] {
+    max-width: 760px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .grid,
+  .row,
+  .form-grid {
+    gap: 20px !important;
+  }
+
+  input,
+  textarea,
+  select {
+    min-height: 54px !important;
+  }
+
+  @media (max-width: 700px) {
+    header,
+    .header,
+    .hero,
+    form,
+    main,
+    .container,
+    .wrap {
+      width: calc(100% - 20px) !important;
+      max-width: 100% !important;
+    }
+
+    header,
+    .header,
+    .hero {
+      padding: 16px 12px 14px !important;
+      margin-top: 8px !important;
+    }
+
+    h1 {
+      font-size: 25px !important;
+    }
+
+    .card,
+    .section,
+    fieldset {
+      padding: 18px !important;
+      margin-bottom: 20px !important;
+      border-radius: 20px !important;
+    }
+  }
+</style>
+
+
+<style id="furusapo-header-sp-compact">
+  header,
+  .header,
+  .hero {
+    padding: 12px 14px 12px !important;
+    margin: 8px auto 10px !important;
+    border-radius: 18px !important;
+  }
+
+  h1 {
+    font-size: clamp(22px, 4.5vw, 30px) !important;
+    line-height: 1.2 !important;
+    margin: 4px 0 6px !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  .lead,
+  .description,
+  header p,
+  .header p,
+  .hero p {
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+    margin: 0 auto !important;
+  }
+
+  form,
+  main,
+  .container,
+  .wrap {
+    margin-top: 8px !important;
+  }
+
+  .test-box,
+  .test-area,
+  [class*="test"] {
+    margin-top: 10px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .card,
+  .section,
+  fieldset {
+    margin-bottom: 22px !important;
+  }
+
+  @media (max-width: 700px) {
+    header,
+    .header,
+    .hero {
+      padding: 10px 10px 10px !important;
+      margin: 6px auto 8px !important;
+      border-radius: 16px !important;
+    }
+
+    h1 {
+      font-size: 22px !important;
+      line-height: 1.18 !important;
+      margin: 3px 0 5px !important;
+    }
+
+    .lead,
+    .description,
+    header p,
+    .header p,
+    .hero p {
+      font-size: 11.5px !important;
+      line-height: 1.4 !important;
+    }
+
+    form,
+    main,
+    .container,
+    .wrap {
+      margin-top: 4px !important;
+    }
+
+    .test-box,
+    .test-area,
+    [class*="test"] {
+      margin-top: 6px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .card,
+    .section,
+    fieldset {
+      margin-bottom: 18px !important;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <span class="label">ふるサポ埼玉</span>
+      <h1>返礼品登録<br>事業者情報入力</h1>
+      <p class="lead">
+        ふるさと納税の返礼品登録に必要な事業者さま情報を確認するためのフォームです。<br>
+        現時点で分かる範囲でご入力ください。未定の項目は「未定」とご記入いただいて大丈夫です。
+      </p>
+    </section>
+
+    
+  
+</div>
+
+
+  
+</div>
+
+
+  
+</div>
+
+
+
+<form id="businessForm">
+
+
+
+      <div id="businessCustomerInfoBox" style="display:none; margin: 20px 0; padding: 18px; background: linear-gradient(135deg,#fffdf8,#fff5e8); border: 1px solid #f2d6ad; border-radius: 20px; color: #5c3d1e; line-height: 1.8; font-size: 14px; box-shadow: 0 8px 24px rgba(230,126,34,0.12);">
+        <div><strong style="display:inline-block; min-width: 110px;">顧客ID</strong><span id="displayBusinessCustomerId"></span></div>
+        <div><strong style="display:inline-block; min-width: 110px;">事業者名</strong><span id="displayBusinessName"></span></div>
+      </div>
+
+      <input type="hidden" name="customer_id" id="customer_id">
+<div style="margin: 24px 0; padding: 16px; background: #f5f5f5; border-radius: 12px; border: 1px solid #ddd;">
+  <button type="button" onclick="fillTestData()" style="padding: 12px 18px; border: none; border-radius: 10px; background: #111; color: #fff; font-size: 15px; cursor: pointer;">
+    テスト入力
+  </button>
+  <p style="margin: 8px 0 0; font-size: 13px; color: #666;">
+    動作確認用のテストデータを自動入力します。
+  </p>
+</div>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">1</span>
+          <h2>事業者さま情報</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>事業者名<span class="required">必須</span></label>
+            <input name="business_name" required>
+          </div>
+
+          <div class="field">
+            <label>郵便番号<span class="required">必須</span></label>
+            <input name="postal_code" placeholder="例：330-0000" required>
+          </div>
+
+          <div class="field">
+            <label>電話番号<span class="required">必須</span></label>
+            <input name="phone" type="tel" required>
+          </div>
+
+          <div class="field full">
+            <label>住所<span class="required">必須</span></label>
+            <input name="address" required>
+          </div>
+
+          <div class="field">
+            <label>FAX番号</label>
+            <input name="fax" type="tel">
+          </div>
+
+          <div class="field">
+            <label>メールアドレス<span class="required">必須</span></label>
+            <input name="email" type="email" required>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">2</span>
+          <h2>ご担当者さま情報</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label>ふるさと納税担当者名<span class="required">必須</span></label>
+            <input name="tax_contact_name" required>
+          </div>
+
+          <div class="field">
+            <label>担当者さま連絡先<span class="required">必須</span></label>
+            <input name="tax_contact_phone" type="tel" required>
+          </div>
+
+          <div class="field">
+            <label>緊急時の担当者名</label>
+            <input name="emergency_contact_name">
+          </div>
+
+          <div class="field">
+            <label>緊急時連絡先</label>
+            <input name="emergency_contact_phone" type="tel">
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">3</span>
+          <h2>WEB掲載用情報</h2>
+        </div>
+
+        <div class="note">
+          返礼品ページやポータルサイト上で表示する名称・連絡先として使用する情報です。
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>WEB用会社名称・屋号<span class="required">必須</span></label>
+            <input name="web_display_name" required>
+          </div>
+
+          <div class="field">
+            <label>WEB用電話番号</label>
+            <input name="web_phone" type="tel">
+          </div>
+
+          <div class="field">
+            <label>営業時間</label>
+            <input name="business_hours" placeholder="例：10:00〜18:00">
+          </div>
+
+          <div class="field">
+            <label>定休日</label>
+            <input name="closed_days" placeholder="例：月曜日、不定休など">
+          </div>
+
+          <div class="field">
+            <label>公式サイトURL</label>
+            <input name="website_url" type="url" placeholder="https://...">
+          </div>
+
+          <div class="field">
+            <label>Instagram等SNS</label>
+            <input name="sns_url" type="url" placeholder="https://...">
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">4</span>
+          <h2>画像・文章の使用確認</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>公式サイト・SNSの画像や文章を、ふるさと納税サイトに使用してもよいですか？<span class="required">必須</span></label>
+            <select name="content_usage_permission" required>
+              <option value="">選択してください</option>
+              <option>使用してよい</option>
+              <option>事前確認が必要</option>
+              <option>使用不可</option>
+              <option>まだ分からない</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label>補足・条件があればご記入ください</label>
+            <textarea name="content_usage_note" placeholder="例：Instagramの写真は使用可、公式サイトの文章は事前確認希望 など"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">5</span>
+          <h2>配送・出荷に関する基本情報</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label>主に利用する宅配業者</label>
+            <select name="delivery_company">
+              <option value="">選択してください</option>
+              <option>ヤマト運輸</option>
+              <option>佐川急便</option>
+              <option>日本郵便</option>
+              <option>その他</option>
+              <option>未定</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>出荷場所は上記住所と同じですか？<span class="required">必須</span></label>
+            <select id="shippingSame" name="shipping_address_same" required>
+              <option value="">選択してください</option>
+              <option>同じ</option>
+              <option>異なる</option>
+              <option>未定</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hidden" id="shippingDetails">
+        <div class="section-title">
+          <span class="num">6</span>
+          <h2>出荷場所が異なる場合</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>出荷場所名</label>
+            <input name="shipping_place_name">
+          </div>
+
+          <div class="field">
+            <label>出荷場所郵便番号</label>
+            <input name="shipping_postal_code" placeholder="例：330-0000">
+          </div>
+
+          <div class="field">
+            <label>出荷場所電話番号</label>
+            <input name="shipping_phone" type="tel">
+          </div>
+
+          <div class="field full">
+            <label>出荷場所住所</label>
+            <input name="shipping_address">
+          </div>
+
+          <div class="field">
+            <label>出荷担当者名</label>
+            <input name="shipping_contact_name">
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">7</span>
+          <h2>その他</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>ご相談・ご要望</label>
+            <textarea name="current_issues" placeholder="例：何を準備すればよいか分からない、写真がない、発送方法が不安、掲載までサポートしてほしい など"></textarea>
+          </div>
+
+          
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="submit">入力内容を送信する</button>
+      </div>
+
+      <p class="footer-note">
+        ご入力いただいた内容は、返礼品登録・掲載準備・委託業者との連携のために使用いたします。
+      </p>
+
+      <div id="businessDoneMessage" style="display:none; margin-top: 24px; padding: 18px; background: #eefaf0; border: 1px solid #c8edcf; color: #12451f; border-radius: 14px; line-height: 1.8; font-size: 15px; font-weight: 700;">
+        事業者情報を受け付けました。
+        <small style="display:block; margin-top: 6px; font-weight: 400; color: #2f6b3d;">
+          続いて、商品情報をご入力ください。商品情報フォームのURLは、ふるサポ埼玉よりご案内いたします。
+        </small>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const shippingSame = document.getElementById("shippingSame");
+    const shippingDetails = document.getElementById("shippingDetails");
+
+    shippingSame.addEventListener("change", function () {
+      if (this.value === "異なる") {
+        shippingDetails.classList.remove("hidden");
+      } else {
+        shippingDetails.classList.add("hidden");
+      }
+    });
+
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbwuNv7aRFDYCn_GfTlZm0N2R3Aij1IG_Lv7ETnQR_DlyyeOwAdZClGVmmGlbD0sL-x_Hg/exec";
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("businessForm");
+      const doneMessage = document.getElementById("businessDoneMessage");
+
+      if (form && doneMessage) {
+        form.addEventListener("input", function() {
+          doneMessage.style.display = "none";
+        });
+
+        form.addEventListener("change", function() {
+          doneMessage.style.display = "none";
+        });
+      }
+    });
+
+    document.getElementById("businessForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const submitButton = this.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = "送信中...";
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        await fetch(GAS_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(data)
+        });
+
+        this.reset();
+        shippingDetails.classList.add("hidden");
+
+        setBusinessCustomerId();
+
+        const params = getPrefillParamsForBusiness();
+        setBusinessValue("business_name", params.get("business_name"));
+        setBusinessValue("tax_contact_name", params.get("contact_name"));
+        setBusinessValue("email", params.get("email"));
+        setBusinessValue("phone", params.get("phone"));
+        setBusinessValue("notes", params.get("notes"));
+        showBusinessCustomerInfo();
+
+        const doneMessage = document.getElementById("businessDoneMessage");
+        if (doneMessage) {
+          doneMessage.style.display = "block";
+          doneMessage.scrollIntoView({ behavior: "smooth" });
+        }
+
+      } catch (error) {
+        console.error(error);
+        alert("送信中にエラーが発生しました。時間をおいて再度お試しください。");
+
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "入力内容を送信する";
+      }
+    });
+  </script>
+
+<script>
+function fillTestData() {
+  const testData = {
+    // business_name はURLから引き継いだ値を優先するため、テスト入力では上書きしない
+    postal_code: "330-0000",
+    phone: "048-000-0000",
+    address: "埼玉県さいたま市",
+    fax: "048-999-9999",
+    email: "test@example.com",
+    tax_contact_name: "テスト担当",
+    tax_contact_phone: "048-111-1111",
+    emergency_contact_name: "緊急テスト担当",
+    emergency_contact_phone: "048-222-2222",
+    web_display_name: "顧客IDテストショップ",
+    web_phone: "048-333-3333",
+    business_hours: "10:00〜17:00",
+    closed_days: "土日祝",
+    website_url: "https://example.com",
+    sns_url: "https://instagram.com/example",
+    content_usage_note: "テスト送信です",
+    delivery_company: "ヤマト運輸",
+    shipping_place_name: "テスト発送元",
+    shipping_postal_code: "330-0000",
+    shipping_phone: "048-444-4444",
+    shipping_address: "埼玉県さいたま市テスト町1-1-1",
+    shipping_contact_name: "発送テスト担当",
+    current_issues: "顧客ID自動発行のテストです",
+    notes: "テスト入力ボタンから入力"
+  };
+
+  Object.keys(testData).forEach(function(name) {
+    const el = document.querySelector('[name="' + name + '"]');
+    if (!el) return;
+
+    if (el.type === "checkbox" || el.type === "radio") {
+      return;
+    }
+
+    el.value = testData[name];
+  });
+
+  const setCheckedByValue = (name, value) => {
+    const el = document.querySelector('[name="' + name + '"][value="' + value + '"]');
+    if (el) el.checked = true;
+  };
+
+  const setSelectValue = (name, value) => {
+    const el = document.querySelector('[name="' + name + '"]');
+    if (el && el.tagName === "SELECT") {
+      el.value = value;
+    }
+  };
+
+  setSelectValue("content_usage_permission", "許可する");
+  setSelectValue("shipping_address_same", "同じ");
+
+  setCheckedByValue("content_usage_permission", "許可する");
+  setCheckedByValue("shipping_address_same", "同じ");
+
+  alert("テストデータを入力しました。内容を確認して送信してください。");
+}
+</script>
+
+
+<script>
+function getPrefillParamsForBusiness() {
+  const params = new URLSearchParams(window.location.search);
+
+  if (window.location.hash) {
+    const hashText = window.location.hash.replace(/^#/, "");
+    const hashParams = new URLSearchParams(hashText);
+    hashParams.forEach(function(value, key) {
+      if (!params.has(key)) {
+        params.set(key, value);
+      }
+    });
+  }
+
+  return params;
+}
+
+function setBusinessValue(name, value) {
+  if (!value) return;
+
+  const el = document.querySelector('[name="' + name + '"]');
+  if (!el) return;
+
+  if (!el.value) {
+    el.value = value;
+  }
+}
+
+function setBusinessCustomerId() {
+  const params = getPrefillParamsForBusiness();
+  const customerId = params.get("customer_id") || "";
+  const input = document.getElementById("customer_id");
+
+  if (input) {
+    input.value = customerId;
+  }
+
+  return customerId;
+}
+
+function showBusinessCustomerInfo() {
+  const params = getPrefillParamsForBusiness();
+  const customerId = params.get("customer_id") || "";
+  const businessName = params.get("business_name") || "";
+
+  const box = document.getElementById("businessCustomerInfoBox");
+  const displayCustomerId = document.getElementById("displayBusinessCustomerId");
+  const displayBusinessName = document.getElementById("displayBusinessName");
+
+  if (!box || !displayCustomerId || !displayBusinessName) return;
+
+  if (customerId || businessName) {
+    displayCustomerId.textContent = customerId || "未指定";
+    displayBusinessName.textContent = businessName || "未指定";
+    box.style.display = "block";
+  } else {
+    box.style.display = "none";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const params = getPrefillParamsForBusiness();
+
+  setBusinessCustomerId();
+
+  setBusinessValue("business_name", params.get("business_name"));
+  setBusinessValue("tax_contact_name", params.get("contact_name"));
+  setBusinessValue("email", params.get("email"));
+  setBusinessValue("phone", params.get("phone"));
+  setBusinessValue("notes", params.get("notes"));
+
+  showBusinessCustomerInfo();
+
+  console.log("かんたん診断から事業者情報へ引き継ぎ:", Object.fromEntries(params.entries()));
+});
+</script>
+
+
+<script>
+(function() {
+  function getParams() {
+    const params = new URLSearchParams(window.location.search || "");
+
+    if (window.location.hash) {
+      const hashText = window.location.hash.replace(/^#/, "");
+      const hashParams = new URLSearchParams(hashText);
+      hashParams.forEach(function(value, key) {
+        if (!params.has(key)) params.set(key, value);
+      });
+    }
+
+    return params;
+  }
+
+  function setValueByName(name, value) {
+    if (!value) return;
+    const el = document.querySelector('[name="' + name + '"]');
+    if (el) el.value = value;
+  }
+
+  function setHiddenCustomerId(customerId) {
+    const el = document.getElementById("customer_id") || document.querySelector('[name="customer_id"]');
+    if (el) el.value = customerId || "";
+  }
+
+  function ensureInfoBox(customerId, businessName) {
+    let box = document.getElementById("businessCustomerInfoBox");
+
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "businessCustomerInfoBox";
+      box.style.cssText = "display:none;margin:24px auto;padding:18px 22px;border:1px solid #d8d1c7;border-radius:16px;background:#fffaf3;max-width:980px;font-size:16px;line-height:1.8;";
+      box.innerHTML =
+        '<strong>引き継ぎ情報</strong><br>' +
+        '顧客ID：<span id="displayBusinessCustomerId"></span><br>' +
+        '事業者名：<span id="displayBusinessName"></span>';
+
+      const form = document.querySelector("form");
+      if (form && form.parentNode) {
+        form.parentNode.insertBefore(box, form);
+      } else {
+        document.body.insertBefore(box, document.body.firstChild);
+      }
+    }
+
+    const idEl = document.getElementById("displayBusinessCustomerId");
+    const nameEl = document.getElementById("displayBusinessName");
+
+    if (customerId || businessName) {
+      if (idEl) idEl.textContent = customerId || "未指定";
+      if (nameEl) nameEl.textContent = businessName || "未指定";
+      box.style.display = "block";
+    }
+  }
+
+  function applyPrefill() {
+    const params = getParams();
+
+    const customerId =
+      params.get("customer_id") ||
+      params.get("customerId") ||
+      "";
+
+    const businessName =
+      params.get("business_name") ||
+      params.get("businessName") ||
+      "";
+
+    setHiddenCustomerId(customerId);
+    setValueByName("business_name", businessName);
+    ensureInfoBox(customerId, businessName);
+
+    console.log("business prefill applied:", {
+      customer_id: customerId,
+      business_name: businessName
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", applyPrefill);
+  } else {
+    applyPrefill();
+  }
+
+  setTimeout(applyPrefill, 300);
+  setTimeout(applyPrefill, 1000);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const fields = document.querySelectorAll(
+    '#businessForm input:not([type="hidden"]), #businessForm select, #businessForm textarea'
+  );
+
+  const progressFill = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+
+  function updateProgress() {
+    let filled = 0;
+
+    fields.forEach(field => {
+      if(field.value.trim() !== '') {
+        filled++;
+      }
+    });
+
+    const percent = Math.round((filled / fields.length) * 100);
+
+    progressFill.style.width = percent + '%';
+
+    if (percent >= 100) {
+      progressFill.classList.add('complete');
+      progressLabel.textContent = '入力完了です 🎉';
+    } else {
+      progressFill.classList.remove('complete');
+      progressLabel.textContent = `${filled}/${fields.length}項目 入力済み`;
+    }
+  }
+
+  fields.forEach(field => {
+    field.addEventListener('input', updateProgress);
+    field.addEventListener('change', updateProgress);
+  });
+
+  updateProgress();
+});
+</script>
+
+<script>
+/* business_VISIBLE_PROGRESS_STATUS_FIX */
+document.addEventListener('DOMContentLoaded', function () {
+  const wrap = document.querySelector('.progress-wrap');
+  const bar = document.getElementById('progressFill');
+  const fields = document.querySelectorAll(
+    '#businessForm input:not([type="hidden"]), #businessForm select, #businessForm textarea'
+  );
+
+  if (!wrap || !bar || !fields.length) return;
+
+  let status = document.getElementById('progressStatusVisible');
+  if (!status) {
+    status = document.createElement('div');
+    status.id = 'progressStatusVisible';
+    wrap.appendChild(status);
+  }
+
+  function updateVisibleProgress() {
+    let filled = 0;
+
+    fields.forEach(function(field) {
+      if ((field.value || '').trim() !== '') {
+        filled++;
+      }
+    });
+
+    const percent = Math.round((filled / fields.length) * 100);
+    bar.style.width = percent + '%';
+
+    if (percent >= 100) {
+      bar.classList.add('complete');
+      status.textContent = '入力完了です 🎉';
+    } else {
+      bar.classList.remove('complete');
+      status.textContent = filled + '/' + fields.length + '項目 入力済み';
+    }
+  }
+
+  fields.forEach(function(field) {
+    field.addEventListener('input', updateVisibleProgress);
+    field.addEventListener('change', updateVisibleProgress);
+  });
+
+  updateVisibleProgress();
+});
+</script>
+
+
+<script id="furusapo-zip-api">
+document.addEventListener("DOMContentLoaded", () => {
+  const zipInput =
+    document.querySelector('input[name="郵便番号"]') ||
+    document.querySelector('input[name="zip"]') ||
+    document.querySelector('input[name="postal_code"]') ||
+    document.querySelector('input[id*="zip"]') ||
+    document.querySelector('input[id*="postal"]');
+
+  const addressInput =
+    document.querySelector('input[name="所在地・住所"]') ||
+    document.querySelector('input[name="住所"]') ||
+    document.querySelector('input[name="address"]') ||
+    document.querySelector('textarea[name="所在地・住所"]') ||
+    document.querySelector('textarea[name="住所"]') ||
+    document.querySelector('textarea[name="address"]');
+
+  if (!zipInput || !addressInput) {
+    console.log("郵便番号または住所欄が見つかりませんでした");
+    return;
+  }
+
+  const note = document.createElement("div");
+  note.style.fontSize = "12px";
+  note.style.color = "#9a6a3a";
+  note.style.marginTop = "6px";
+  note.textContent = "郵便番号を入力すると住所が自動入力されます";
+  zipInput.insertAdjacentElement("afterend", note);
+
+  async function searchAddress() {
+    const zip = zipInput.value.replace(/[^0-9]/g, "");
+
+    if (zip.length !== 7) {
+      return;
+    }
+
+    note.textContent = "住所を検索中...";
+    note.style.color = "#9a6a3a";
+
+    try {
+      const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zip}`);
+      const data = await res.json();
+
+      if (data.status !== 200 || !data.results || !data.results[0]) {
+        note.textContent = "住所が見つかりませんでした";
+        note.style.color = "#c0392b";
+        return;
+      }
+
+      const r = data.results[0];
+      const address = `${r.address1}${r.address2}${r.address3}`;
+
+      addressInput.value = address;
+      addressInput.dispatchEvent(new Event("input", { bubbles: true }));
+      addressInput.focus();
+
+      note.textContent = "住所を自動入力しました。番地以降を入力してください";
+      note.style.color = "#2f8f46";
+    } catch (e) {
+      console.error(e);
+      note.textContent = "住所検索に失敗しました";
+      note.style.color = "#c0392b";
+    }
+  }
+
+  zipInput.addEventListener("input", searchAddress);
+  zipInput.addEventListener("blur", searchAddress);
+});
+</script>
+
+</body>
+
+
+
+</html>

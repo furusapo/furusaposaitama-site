@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ふるサポ埼玉｜正式申込フォーム</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: #f6f3ef;
+      color: #1f2933;
+      line-height: 1.8;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #edf3fb);
+      border-radius: 24px;
+      padding: 34px 26px;
+      margin-bottom: 24px;
+      border: 1px solid #e5e0d8;
+      box-shadow: 0 12px 30px rgba(31, 58, 95, 0.08);
+    }
+
+    .label {
+      display: inline-block;
+      background: #1f3a5f;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      color: #1f3a5f;
+      font-size: 30px;
+      line-height: 1.4;
+    }
+
+    .lead {
+      color: #6b7280;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .section {
+      background: white;
+      border: 1px solid #e5e0d8;
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 8px 20px rgba(31, 41, 51, 0.04);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #e5e0d8;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .num {
+      width: 30px;
+      height: 30px;
+      background: #1f3a5f;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      color: #1f3a5f;
+      font-size: 19px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .required {
+      color: #b91c1c;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #d7d2ca;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      background: white;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #1f3a5f;
+      box-shadow: 0 0 0 4px rgba(31, 58, 95, 0.12);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .note {
+      background: #fffaf2;
+      border: 1px solid #ead8bd;
+      color: #6b4e25;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .price-box {
+      background: #f8fafc;
+      border: 1px solid #dbe3ee;
+      border-radius: 14px;
+      padding: 16px;
+      color: #334155;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .check-field {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .check-field input {
+      width: auto;
+      margin-top: 7px;
+    }
+
+    .check-field label {
+      font-weight: 500;
+    }
+
+    button {
+      border: none;
+      background: #1f3a5f;
+      color: white;
+      padding: 14px 38px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(31, 58, 95, 0.22);
+    }
+
+    .actions {
+      text-align: center;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #6b7280;
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .section {
+        padding: 22px 18px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+
+<style id="furusapo-common-ui-v1">
+  body {
+    font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif !important;
+    background: #fff8f1 !important;
+    color: #3a2a1f !important;
+    overflow-x: hidden !important;
+  }
+
+  header, .header, .hero {
+    max-width: 760px !important;
+    width: calc(100% - 24px) !important;
+    margin: 8px auto 10px !important;
+    padding: 12px 14px !important;
+    border-radius: 18px !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  h1 {
+    font-size: clamp(22px, 4.5vw, 30px) !important;
+    line-height: 1.2 !important;
+    margin: 4px 0 6px !important;
+    letter-spacing: 0.02em !important;
+    color: #3a2a1f !important;
+  }
+
+  h2, h3, legend {
+    color: #173b63 !important;
+  }
+
+  .lead, .description, header p, .header p, .hero p {
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+    color: #7a6555 !important;
+    margin: 0 auto !important;
+  }
+
+  form, main, .container, .wrap {
+    max-width: 760px !important;
+    width: calc(100% - 32px) !important;
+    margin: 8px auto 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  form {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .card, .section, fieldset {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background: #fffaf5 !important;
+    border: 1px solid #ffd4a8 !important;
+    border-radius: 24px !important;
+    padding: 28px !important;
+    margin: 0 auto 28px !important;
+    box-shadow: 0 10px 28px rgba(180, 110, 40, 0.08) !important;
+  }
+
+  label {
+    font-weight: 800 !important;
+    color: #4a3427 !important;
+    margin-bottom: 7px !important;
+    display: block !important;
+  }
+
+  input, textarea, select {
+    width: 100% !important;
+    min-height: 54px !important;
+    border: 1.5px solid #f3b986 !important;
+    border-radius: 16px !important;
+    padding: 13px 14px !important;
+    font-size: 16px !important;
+    background: #fff !important;
+    color: #3a2a1f !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+  }
+
+  textarea {
+    min-height: 120px !important;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #ff8a3d !important;
+    box-shadow: 0 0 0 4px rgba(255, 138, 61, 0.18) !important;
+    background: #fffdf9 !important;
+  }
+
+  button,
+  input[type="button"],
+  input[type="submit"],
+  .btn,
+  .test-btn,
+  .sample-btn {
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 13px 20px !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    background: linear-gradient(135deg, #ffb15c 0%, #ff8a3d 48%, #ff6b35 100%) !important;
+    box-shadow: 0 9px 22px rgba(255, 120, 48, 0.28) !important;
+    cursor: pointer !important;
+  }
+
+  button:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover,
+  .btn:hover {
+    transform: translateY(-1px) !important;
+    opacity: .96 !important;
+  }
+
+  .number, .step-number, .step-num, .section-number, .question-number,
+  [class*="number"], [class*="step"] {
+    background: #173b63 !important;
+    color: #fff !important;
+    border-color: #173b63 !important;
+  }
+
+  .grid, .row, .form-grid {
+    gap: 20px !important;
+  }
+
+  .test-box, .test-area, [class*="test"] {
+    max-width: 760px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 10px auto 20px !important;
+  }
+
+  @media (max-width: 700px) {
+    header, .header, .hero,
+    form, main, .container, .wrap {
+      width: calc(100% - 20px) !important;
+      max-width: 100% !important;
+    }
+
+    h1 {
+      font-size: 22px !important;
+    }
+
+    .lead, .description, header p, .header p, .hero p {
+      font-size: 11.5px !important;
+    }
+
+    .card, .section, fieldset {
+      padding: 18px !important;
+      margin-bottom: 20px !important;
+      border-radius: 20px !important;
+    }
+  }
+</style>
+
+
+<style id="furusapo-application-fix-v1">
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 22px !important;
+    height: 22px !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    accent-color: #173b63 !important;
+    box-shadow: none !important;
+    flex: 0 0 auto !important;
+  }
+
+  .checkbox-card,
+  .check-card,
+  label:has(input[type="checkbox"]),
+  label:has(input[type="radio"]) {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+  }
+
+  .actions,
+  .button-area,
+  .btn-area,
+  .form-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 14px !important;
+    margin-top: 28px !important;
+  }
+
+  .actions button,
+  .button-area button,
+  .btn-area button,
+  .form-actions button,
+  button {
+    width: auto !important;
+    min-width: 150px !important;
+    max-width: 220px !important;
+    min-height: 54px !important;
+    padding: 12px 22px !important;
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+    border-radius: 999px !important;
+  }
+
+  button[type="submit"] {
+    min-width: 220px !important;
+  }
+
+  a button,
+  button.back,
+  .back,
+  .menu,
+  .menu-back {
+    background: #e8e8ee !important;
+    color: #333 !important;
+    box-shadow: none !important;
+  }
+
+  @media (max-width: 700px) {
+    .actions,
+    .button-area,
+    .btn-area,
+    .form-actions {
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+
+    .actions button,
+    .button-area button,
+    .btn-area button,
+    .form-actions button,
+    button {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <span class="label">ふるサポ埼玉</span>
+      <h1>正式申込フォーム</h1>
+      <p class="lead">
+        ふるさと納税の返礼品登録サポートを正式にお申し込みいただくためのフォームです。<br>
+        ご入力後、内容を確認のうえ、請求・お支払いに関するご案内をお送りいたします。
+      </p>
+    </section>
+
+    <form id="applicationForm">
+<div style="margin: 24px 0; padding: 16px; background: #f5f5f5; border-radius: 12px; border: 1px solid #ddd;">
+  <button type="button" onclick="fillApplicationTestData()" style="padding: 12px 18px; border: none; border-radius: 10px; background: #111; color: #fff; font-size: 15px; cursor: pointer;">
+    テスト入力
+  </button>
+  <p style="margin: 8px 0 0; font-size: 13px; color: #666;">
+    申請情報フォームの動作確認用データを自動入力します。
+  </p>
+</div>
+
+
+<div id="applicationCustomerInfoBox" style="display:none; margin: 20px 0; padding: 16px; background: #f0f7ff; border: 1px solid #d8eaff; border-radius: 14px; color: #123; line-height: 1.8; font-size: 14px;">
+  <div><strong style="display:inline-block; min-width: 110px;">顧客ID</strong><span id="displayApplicationCustomerId"></span></div>
+  <div><strong style="display:inline-block; min-width: 110px;">事業者名</strong><span id="displayApplicationBusinessName"></span></div>
+</div>
+
+<input type="hidden" name="customer_id" id="customer_id">
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">1</span>
+          <h2>申込者情報</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>事業者名<span class="required">必須</span></label>
+            <input name="business_name" required>
+          </div>
+
+          <div class="field">
+            <label>担当者名<span class="required">必須</span></label>
+            <input name="contact_name" required>
+          </div>
+
+          <div class="field">
+            <label>メールアドレス<span class="required">必須</span></label>
+            <input name="email" type="email" required>
+          </div>
+
+          <div class="field">
+            <label>電話番号<span class="required">必須</span></label>
+            <input name="phone" type="tel" required>
+          </div>
+
+          <div class="field">
+            <label>請求書の宛名<span class="required">必須</span></label>
+            <input name="invoice_name" placeholder="例：株式会社〇〇／〇〇商店" required>
+          </div>
+
+          <div class="field full">
+            <label>請求先住所</label>
+            <input name="invoice_address" placeholder="事業者住所と同じ場合は「同上」でOKです">
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">2</span>
+          <h2>申込プラン</h2>
+        </div>
+
+        <div class="note">
+          金額は仮設定です。実際の提供内容・金額に合わせて後で調整できます。
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>お申し込み内容<span class="required">必須</span></label>
+            <select name="plan" required>
+              <option value="">選択してください</option>
+              <option>初期登録サポート</option>
+              <option>商品掲載サポート</option>
+              <option>初期登録＋商品掲載サポート</option>
+              <option>追加商品登録</option>
+              <option>月額サポート</option>
+              <option>個別相談</option>
+              <option>その他</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>申込金額（税込）</label>
+            <input name="amount" type="number" placeholder="例：78000">
+          </div>
+
+          <div class="field">
+            <label>対象商品数</label>
+            <input name="product_count" type="number" placeholder="例：1">
+          </div>
+
+          <div class="field full">
+            <label>今回依頼したい内容</label>
+            <textarea name="request_detail" placeholder="例：事業者登録から掲載準備までお願いしたい／商品情報の整理をお願いしたい など"></textarea>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <strong>作業開始について</strong><br>
+          原則として、ご入金確認後に正式な作業開始となります。内容確認後、請求書または振込先情報をご案内いたします。
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">3</span>
+          <h2>お支払い方法</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>希望するお支払い方法<span class="required">必須</span></label>
+            <select name="payment_method" required>
+              <option value="">選択してください</option>
+              <option>銀行振込</option>
+              <option>カード決済希望</option>
+              <option>請求書払い希望</option>
+              <option>相談したい</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label>請求・支払いに関する補足</label>
+            <textarea name="payment_note" placeholder="請求書の送付先、支払い予定日、その他ご希望があればご記入ください。"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">4</span>
+          <h2>確認事項</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <div class="check-field">
+              <input type="checkbox" id="agree_price" name="agree_price" value="同意する" required>
+              <label for="agree_price">申込内容・料金について確認し、同意します。<span class="required">必須</span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <div class="check-field">
+              <input type="checkbox" id="agree_start" name="agree_start" value="同意する" required>
+              <label for="agree_start">作業開始は原則として入金確認後となることに同意します。<span class="required">必須</span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <div class="check-field">
+              <input type="checkbox" id="agree_info" name="agree_info" value="同意する" required>
+              <label for="agree_info">入力内容に誤りがないことを確認しました。<span class="required">必須</span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label>備考</label>
+            <textarea name="notes"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="submit">正式申込を送信する</button>
+      </div>
+
+      <p class="footer-note">
+        ご入力いただいた内容は、お申し込み内容の確認・請求・作業開始のご案内のために使用いたします。
+      </p>
+
+      <div id="applicationDoneMessage" style="display:none; margin-top: 24px; padding: 18px; background: #eefaf0; border: 1px solid #c8edcf; color: #12451f; border-radius: 14px; line-height: 1.8; font-size: 15px; font-weight: 700;">
+        正式申込を送信しました。
+        <small style="display:block; margin-top: 6px; font-weight: 400; color: #2f6b3d;">
+          内容を確認のうえ、請求・お支払い方法についてご案内いたします。
+        </small>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    
+function getApplicationUrlValue(key) {
+  let value = "";
+
+  // ?customer_id=FS-xxx&business_name=xxx
+  const params = new URLSearchParams(window.location.search);
+  value = params.get(key) || "";
+
+  // #customer_id=FS-xxx&business_name=xxx
+  if (!value && window.location.hash) {
+    const hashText = window.location.hash.replace(/^#/, "");
+    const hashParams = new URLSearchParams(hashText);
+    value = hashParams.get(key) || "";
+  }
+
+  return value;
+}
+
+function getApplicationCustomerId() {
+  return getApplicationUrlValue("customer_id");
+}
+
+function getApplicationBusinessName() {
+  return getApplicationUrlValue("business_name");
+}
+
+function setApplicationCustomerId() {
+  const customerId = getApplicationCustomerId();
+  const input = document.getElementById("customer_id");
+
+  if (input) {
+    input.value = customerId;
+  }
+
+  return customerId;
+}
+
+function setApplicationBusinessName() {
+  const businessName = getApplicationBusinessName();
+  const input = document.querySelector('[name="business_name"]');
+
+  if (businessName && input && !input.value) {
+    input.value = businessName;
+  }
+
+  return businessName;
+}
+
+function showApplicationCustomerInfo() {
+  const customerId = getApplicationCustomerId();
+  const businessName = getApplicationBusinessName();
+
+  const box = document.getElementById("applicationCustomerInfoBox");
+  const displayCustomerId = document.getElementById("displayApplicationCustomerId");
+  const displayBusinessName = document.getElementById("displayApplicationBusinessName");
+
+  if (!box || !displayCustomerId || !displayBusinessName) return;
+
+  if (customerId || businessName) {
+    displayCustomerId.textContent = customerId || "未指定";
+    displayBusinessName.textContent = businessName || "未指定";
+    box.style.display = "block";
+  } else {
+    box.style.display = "none";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  setApplicationCustomerId();
+  setApplicationBusinessName();
+  showApplicationCustomerInfo();
+});
+
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbximIQR_j3PyBOLt_QaxGrs5nzpUbooxu5nvnrTfkDm1T1gWnqy5b-jQ7ueg5G4rHoUlw/exec";
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("applicationForm");
+      const doneMessage = document.getElementById("applicationDoneMessage");
+
+      if (form && doneMessage) {
+        form.addEventListener("input", function() {
+          doneMessage.style.display = "none";
+        });
+
+        form.addEventListener("change", function() {
+          doneMessage.style.display = "none";
+        });
+      }
+    });
+
+    document.getElementById("applicationForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const submitButton = this.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = "送信中...";
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      // 顧客IDをURLから取得して送信データに追加
+      data.customer_id = getApplicationCustomerId();
+
+      console.log("申請情報 送信customer_id:", data.customer_id);
+
+      try {
+        await fetch(GAS_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(data)
+        });
+
+        this.reset();
+
+        setApplicationCustomerId();
+        setApplicationBusinessName();
+        showApplicationCustomerInfo();
+
+        const doneMessage = document.getElementById("applicationDoneMessage");
+        if (doneMessage) {
+          doneMessage.style.display = "block";
+          doneMessage.scrollIntoView({ behavior: "smooth" });
+        }
+
+      } catch (error) {
+        console.error(error);
+        alert("送信中にエラーが発生しました。時間をおいて再度お試しください。");
+
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "正式申込を送信する";
+      }
+    });
+  </script>
+
+<script>
+function fillApplicationTestData() {
+  const form = document.getElementById("applicationForm");
+  if (!form) {
+    alert("申請情報フォームが見つかりません。");
+    return;
+  }
+
+  const specificData = {
+    // business_name はURLから引き継いだ値を優先するため、テスト入力では上書きしない
+    person_in_charge: "テスト担当",
+    contact_name: "テスト担当",
+    phone: "048-000-0000",
+    email: "test@example.com",
+    address: "埼玉県さいたま市テスト町1-1-1",
+    postal_code: "330-0000",
+    product_name: "顧客IDテスト商品",
+    notes: "テスト入力ボタンから入力",
+    note: "テスト入力ボタンから入力",
+    remarks: "テスト入力ボタンから入力"
+  };
+
+  const elements = form.querySelectorAll("input, textarea, select");
+
+  elements.forEach(function(el) {
+    if (!el.name || el.name === "customer_id" || el.name === "business_name") return;
+
+    const name = el.name;
+    const type = (el.type || "").toLowerCase();
+
+    if (specificData[name]) {
+      el.value = specificData[name];
+      return;
+    }
+
+    if (type === "hidden") return;
+
+    if (type === "checkbox" || type === "radio") {
+      const sameNameItems = form.querySelectorAll('[name="' + name + '"]');
+      if (sameNameItems.length > 0) {
+        sameNameItems[0].checked = true;
+      }
+      return;
+    }
+
+    if (el.tagName === "SELECT") {
+      const options = Array.from(el.options);
+      const validOption = options.find(opt => opt.value && !opt.disabled);
+      if (validOption) {
+        el.value = validOption.value;
+      }
+      return;
+    }
+
+    if (el.tagName === "TEXTAREA") {
+      el.value = "申請情報フォームの顧客ID連携テストです。";
+      return;
+    }
+
+    if (type === "email") {
+      el.value = "test@example.com";
+    } else if (type === "tel") {
+      el.value = "048-000-0000";
+    } else if (type === "url") {
+      el.value = "https://example.com";
+    } else if (type === "number") {
+      el.value = "1000";
+    } else if (type === "date") {
+      el.value = "2026-06-12";
+    } else {
+      el.value = "テスト入力";
+    }
+  });
+
+  alert("申請情報のテストデータを入力しました。内容を確認して送信してください。");
+}
+</script>
+
+</body>
+</html>

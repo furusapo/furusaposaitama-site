@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あなたの商品、出せる？</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", "Yu Gothic", sans-serif;
+      background: linear-gradient(180deg, #fffaf5 0%, #fff3e8 100%);
+      color: #1f2933;
+      line-height: 1.8;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #fff8ef 0%, #ffe5d0 100%);
+      border-radius: 28px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      border: 1px solid #e5e0d8;
+      box-shadow: 0 12px 24px rgba(230, 126, 34, 0.12);
+    }
+
+    .label {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff8a3d, #ff5e7a);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: #3b2d1f;
+      font-size: 20px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .lead {
+      color: #6b7280;
+      margin: 0;
+      font-size: 13px;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .section {
+      background: white;
+      border: 1px solid #e5e0d8;
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 8px 20px rgba(31, 41, 51, 0.04);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #e5e0d8;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .num {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #ff8a3d, #ff5e7a);
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      margin: 0;
+      color: #3b2d1f;
+      font-size: 19px;
+    }
+
+    .question {
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #eee9e1;
+    }
+
+    .question:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .question-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      border: 2px solid #f1e7db;
+      border-radius: 18px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .option:hover {
+      transform: translateY(-2px);
+      border-color: #f5a623;
+      box-shadow: 0 10px 20px rgba(245,166,35,0.15);
+    }
+
+    .option:has(input:checked) {
+      background: #fff6ea;
+      border-color: #f5a623;
+      box-shadow: 0 8px 18px rgba(245,166,35,0.18);
+    }
+
+    .option input {
+      width: 20px;
+      height: 20px;
+      accent-color: #f5a623;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .option span {
+      font-size: 13px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #d7d2ca;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      background: white;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .required {
+      color: #b91c1c;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    button {
+      border: none;
+      background: linear-gradient(135deg, #ff8a3d, #ff5e7a);
+      color: white;
+      padding: 14px 38px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(31, 58, 95, 0.22);
+    }
+
+    .actions {
+      text-align: center;
+    }
+
+    .result {
+      display: none;
+      background: #ffffff;
+      border: 2px solid #1f3a5f;
+      border-radius: 22px;
+      padding: 26px;
+      margin-top: 24px;
+      box-shadow: 0 12px 30px rgba(31, 58, 95, 0.10);
+    }
+
+    .result h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .score {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff8a3d, #ff5e7a);
+      color: white;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .cta {
+      margin-top: 18px;
+      background: #fffaf2;
+      border: 1px solid #ead8bd;
+      color: #6b4e25;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    .cta a {
+      color: #3b2d1f;
+      font-weight: 700;
+    }
+
+    
+    .progress-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      margin: 0 -16px 24px;
+      padding: 12px 16px;
+      background: rgba(246, 243, 239, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #7a6a58;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #f1e7db;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff9f43, #ff7b54);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .result-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .result-message {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #5b4630;
+      margin-top: 12px;
+    }
+
+
+    .footer-note {
+      text-align: center;
+      color: #6b7280;
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+
+    @media (max-width: 720px) {
+      h1 {
+        font-size: 18px;
+      }
+
+      .hero {
+        padding: 14px 16px;
+      }
+
+      .lead {
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      .section {
+        padding: 22px 18px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <span class="label">✨ 3分で無料診断</span>
+      <h1 style="letter-spacing:-0.03em;">出せる？無料診断</h1>
+      <p class="lead">
+        あなたの商品が、ふるさと納税の返礼品として登録できそうかを簡単に確認できます。<br>
+        正式な可否判断には自治体・委託業者等の確認が必要ですが、最初の目安としてご利用ください。
+      </p>
+    </section>
+
+    <div class="progress-wrap">
+      <div class="progress-text">
+        <span>診断の進捗</span>
+        <span id="progressLabel">0 / 7</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+<form id="diagnosisForm">
+      <section class="section">
+        <div class="section-title">
+          <span class="num">1</span>
+          <h2>商品について</h2>
+        </div>
+
+        <div class="question">
+          <div class="question-title">Q1. 返礼品にしたい商品・サービスがありますか？</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q1" value="2" required><span>はい、具体的な商品・サービスがあります</span></label>
+            <label class="option"><input type="radio" name="q1" value="1"><span>候補はありますが、まだ決まっていません</span></label>
+            <label class="option"><input type="radio" name="q1" value="0"><span>まだありません</span></label>
+          </div>
+        </div>
+
+        <div class="question">
+          <div class="question-title">Q2. その商品は継続して提供できますか？</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q2" value="2" required><span>継続して提供できます</span></label>
+            <label class="option"><input type="radio" name="q2" value="1"><span>数量限定・季節限定なら可能です</span></label>
+            <label class="option"><input type="radio" name="q2" value="0"><span>まだ分かりません</span></label>
+          </div>
+        </div>
+
+        <div class="question">
+          <div class="question-title">Q3. 商品の価格・内容量・サイズは決まっていますか？</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q3" value="2" required><span>決まっています</span></label>
+            <label class="option"><input type="radio" name="q3" value="1"><span>だいたい決まっています</span></label>
+            <label class="option"><input type="radio" name="q3" value="0"><span>まだ決まっていません</span></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">2</span>
+          <h2>製造・制作について</h2>
+        </div>
+
+        <div class="question">
+          <div class="question-title">Q4. 商品の製造・制作・加工は、主に自社または地域内で行っていますか？</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q4" value="2" required><span>はい、主に自社または地域内で行っています</span></label>
+            <label class="option"><input type="radio" name="q4" value="1"><span>一部を外注しています</span></label>
+            <label class="option"><input type="radio" name="q4" value="0"><span>ほとんど外部で製造・制作しています</span></label>
+          </div>
+        </div>
+
+        <div class="question">
+          <div class="question-title">Q5. 商品の制作工程・製造工程を説明できますか？</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q5" value="2" required><span>説明できます</span></label>
+            <label class="option"><input type="radio" name="q5" value="1"><span>整理すれば説明できそうです</span></label>
+            <label class="option"><input type="radio" name="q5" value="0"><span>まだ整理できていません</span></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">3</span>
+          <h2>発送・掲載準備について</h2>
+        </div>
+
+        <div class="question">
+          <div class="question-title">Q6. 商品を発送する体制はありますか？</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q6" value="2" required><span>発送できます</span></label>
+            <label class="option"><input type="radio" name="q6" value="1"><span>準備すれば対応できそうです</span></label>
+            <label class="option"><input type="radio" name="q6" value="0"><span>まだ発送体制がありません</span></label>
+          </div>
+        </div>
+
+        <div class="question">
+          <div class="question-title">Q7. 商品写真や説明文はありますか？</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q7" value="2" required><span>写真も説明文もあります</span></label>
+            <label class="option"><input type="radio" name="q7" value="1"><span>どちらかはあります</span></label>
+            <label class="option"><input type="radio" name="q7" value="0"><span>まだありません</span></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <span class="num">4</span>
+          <h2>ご連絡先</h2>
+        </div>
+
+        <div class="grid">
+          <div class="field full">
+            <label>事業者名・屋号</label>
+            <input type="text" name="business_name" placeholder="例：〇〇商店">
+          </div>
+
+          <div class="field">
+            <label>お名前</label>
+            <input type="text" name="contact_name" placeholder="例：山田 太郎">
+          </div>
+
+          <div class="field">
+            <label>メールアドレス</label>
+            <input type="email" name="email" placeholder="example@example.com">
+          </div>
+
+          <div class="field full">
+            <label>相談したいこと・商品について</label>
+            <textarea name="notes" placeholder="商品内容、現在困っていること、登録したい自治体などがあればご記入ください。"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="submit">診断結果を見る</button>
+      </div>
+    </form>
+
+    <section class="result" id="resultBox">
+      <div class="score" id="scoreText"></div>
+      <h2 id="resultTitle"></h2>
+      <p id="resultMessage"></p>
+
+      <div class="cta">
+        診断結果をもとに、次は事業者情報の入力へお進みください。<br>
+        入力いただいた事業者名・お名前・メールアドレス等は、次のフォームへ引き継がれます。<br>
+        <a href="business.html">事業者基本情報フォームへ進む</a>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      本診断は簡易的な目安です。正式な登録可否は、自治体・委託業者・地場産品基準等の確認が必要です。
+    </p>
+  </main>
+
+  <script>
+    document.getElementById("diagnosisForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      let score = 0;
+      for (let i = 1; i <= 7; i++) {
+        score += Number(data["q" + i] || 0);
+      }
+
+      const resultBox = document.getElementById("resultBox");
+      const scoreText = document.getElementById("scoreText");
+      const resultTitle = document.getElementById("resultTitle");
+      const resultMessage = document.getElementById("resultMessage");
+
+      scoreText.textContent = "診断スコア：" + score + " / 14点";
+
+      if (score >= 10) {
+        resultTitle.textContent = "返礼品登録できる可能性が高いです";
+        resultMessage.textContent = "商品内容・製造工程・発送体制がある程度整っているため、ふるさと納税の返礼品登録に進められる可能性があります。次は事業者情報・商品情報を整理して、自治体や委託業者への確認に進みましょう。";
+      } else if (score >= 5) {
+        resultTitle.textContent = "登録に向けて条件確認が必要です";
+        resultMessage.textContent = "商品候補はありますが、価格・工程・発送体制・写真など、整理が必要な項目があります。今の段階で必要な準備を確認することで、登録に向けた具体的なステップが見えてきます。";
+      } else {
+        resultTitle.textContent = "まずは商品内容の整理から始めましょう";
+        resultMessage.textContent = "現時点では、返礼品として登録するために必要な情報がまだ不足している可能性があります。商品候補、製造工程、発送方法などを一緒に整理するところから始めるのがおすすめです。";
+      }
+
+      data.score = score;
+      data.result_title = resultTitle.textContent;
+      data.result_message = resultMessage.textContent;
+
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: "smooth" });
+
+      fetch("https://script.google.com/macros/s/AKfycbwuNv7aRFDYCn_GfTlZm0N2R3Aij1IG_Lv7ETnQR_DlyyeOwAdZClGVmmGlbD0sL-x_Hg/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        console.log("診断データを送信しました:", data);
+      })
+      .catch((error) => {
+        console.error("診断データ送信エラー:", error);
+      });
+    });
+  </script>
+
+<script>
+function getDiagnosisValue(name) {
+  const el = document.querySelector('[name="' + name + '"]');
+  return el ? el.value.trim() : "";
+}
+
+function updateBusinessLinkFromDiagnosis() {
+  const params = new URLSearchParams();
+
+  const businessName = getDiagnosisValue("business_name");
+  const contactName = getDiagnosisValue("contact_name");
+  const email = getDiagnosisValue("email");
+  const phone = getDiagnosisValue("phone");
+  const notes = getDiagnosisValue("notes");
+
+  if (businessName) params.set("business_name", businessName);
+  if (contactName) params.set("contact_name", contactName);
+  if (email) params.set("email", email);
+  if (phone) params.set("phone", phone);
+  if (notes) params.set("notes", notes);
+
+  const link = document.getElementById("businessFormNextLink");
+  if (link) {
+    link.href = "business.html#" + params.toString();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const link = document.querySelector('a[href="business.html"]');
+
+  if (link && !link.id) {
+    link.id = "businessFormNextLink";
+  }
+
+  const nextLink = document.getElementById("businessFormNextLink");
+  if (nextLink) {
+    nextLink.addEventListener("click", function() {
+      updateBusinessLinkFromDiagnosis();
+    });
+  }
+
+  const form = document.getElementById("diagnosisForm");
+  if (form) {
+    form.addEventListener("input", updateBusinessLinkFromDiagnosis);
+    form.addEventListener("submit", function() {
+      setTimeout(updateBusinessLinkFromDiagnosis, 300);
+    });
+  }
+
+  updateBusinessLinkFromDiagnosis();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const radios = document.querySelectorAll('input[type="radio"]');
+  const progressFill = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+
+  function updateProgress() {
+    const answered = new Set();
+
+    radios.forEach(radio => {
+      if (radio.checked) answered.add(radio.name);
+    });
+
+    const count = answered.size;
+    const percent = (count / 7) * 100;
+
+    progressFill.style.width = percent + '%';
+    progressLabel.textContent = `${count} / 7`;
+  }
+
+  radios.forEach(radio => {
+    radio.addEventListener('change', updateProgress);
+  });
+
+  updateProgress();
+});
+</script>
+
+</body>
+
+</html>
