@@ -349,6 +349,7 @@
       }
     }
   </style>
+  <script src="assets/analytics.js" defer></script>
 </head>
 
 <body>
@@ -546,6 +547,7 @@
       resultBox.style.display = "block";
       resultTitle.focus({ preventScroll: true });
       resultBox.scrollIntoView();
+      document.dispatchEvent(new Event("furusapo:diagnosis-complete"));
 
       fetch("https://script.google.com/macros/s/AKfycbwuNv7aRFDYCn_GfTlZm0N2R3Aij1IG_Lv7ETnQR_DlyyeOwAdZClGVmmGlbD0sL-x_Hg/exec", {
         method: "POST",
