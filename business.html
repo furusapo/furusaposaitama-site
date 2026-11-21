@@ -561,6 +561,10 @@
       max-width: 100% !important;
     }
 
+    main.page {
+      box-sizing: border-box;
+    }
+
     header,
     .header,
     .hero {
@@ -1285,6 +1289,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const progressFill = document.getElementById('progressFill');
   const progressLabel = document.getElementById('progressLabel');
+  if (!progressFill || !progressLabel || !fields.length) return;
 
   function updateProgress() {
     let filled = 0;

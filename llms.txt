@@ -3,8 +3,8 @@
 ふるサポ埼玉は、全国の事業者向けに、ふるさと納税の事業者登録・返礼品登録を支援するサービスです。
 
 ## 主なページ
-- https://furusaposaitama.com/
-- https://furusaposaitama.com/furusato-nozei-jigyosha-toroku.html
+- https://furusapojapan.com/
+- https://furusapojapan.com/furusato-nozei-jigyosha-toroku.html
 
 ## 提供内容
 - 自治体への事業者登録支援
@@ -16,4 +16,4 @@
 ## 対応地域
 日本全国。オンライン対応。
 
-- https://furusaposaitama.com/service/ : サービス一覧
+- https://furusapojapan.com/service/ : サービス一覧

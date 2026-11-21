@@ -1,0 +1,83 @@
+:root {
+  color-scheme: light;
+  --ink: #071b33;
+  --muted: #3c5066;
+  --blue: #075eaf;
+  --pale: #edf6fd;
+  --border: #d3e3ef;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 1rem; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #fff;
+  font: 1rem/1.8 system-ui, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  overflow-wrap: anywhere;
+}
+a { color: var(--blue); text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: .13em; }
+:focus-visible { outline: 3px solid #ad5100; outline-offset: 3px; }
+.skip { position: absolute; left: 1rem; top: .5rem; padding: .5rem 1rem; background: #fff; }
+.skip:not(:focus) { clip-path: inset(50%); }
+.wrap { width: min(100% - 2rem, 70rem); margin-inline: auto; }
+.site-header { border-bottom: 1px solid var(--border); }
+.nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 1.5rem; padding-block: .5rem; }
+.logo { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; color: var(--ink); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.logo::before { content: ""; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: #086fe0; }
+nav { display: flex; flex-wrap: wrap; gap: 0 1rem; }
+nav a { display: inline-flex; min-height: 44px; align-items: center; font-size: .875rem; font-weight: 700; }
+section { padding-block: clamp(2.5rem, 6vw, 5rem); }
+.hero, .tint { background: var(--pale); }
+.hero-grid, .split { display: grid; align-items: center; gap: 1.5rem; }
+h1, h2, h3 { line-height: 1.4; margin: 0 0 .65rem; }
+h1 { font-size: clamp(1.85rem, 4vw, 3.1rem); text-wrap: balance; letter-spacing: -.025em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.15rem); }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 1rem; color: var(--muted); }
+.eyebrow { font-size: .875rem; font-weight: 700; color: var(--blue); }
+.lead { font-size: clamp(1rem, 2vw, 1.2rem); max-width: 42rem; }
+.fine { font-size: .875rem; margin: 1rem 0 0; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.button, .priceBtn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: .55rem 1rem; border: 1px solid var(--blue);
+  border-radius: .55rem; background: var(--blue); color: #fff; text-align: center;
+  font-weight: 700; text-decoration: none;
+}
+.button:hover, .priceBtn:hover { text-decoration: underline; }
+.secondary, .outline { background: #fff; color: var(--blue); }
+.hero-card, .card, .priceCard { padding: clamp(1rem, 3vw, 1.6rem); background: #fff; border: 1px solid var(--border); border-radius: .85rem; }
+.hero-card h2 { font-size: 1.25rem; }
+.hero-card ol { margin: 1rem 0 0; padding-left: 1.6rem; }
+.hero-card li { padding: .6rem 0 .6rem .4rem; border-top: 1px solid var(--border); }
+.hero-card li::marker { color: var(--blue); font-weight: 700; }
+.hero-card span { display: block; color: var(--muted); font-size: .9rem; }
+.cards, .priceGrid, .steps { display: grid; gap: 1rem; margin-block: 1.25rem; }
+.card p, .hero-card li:last-child, details p { margin-bottom: 0; }
+.compact { max-width: 42rem; margin-block: 1rem; }
+.steps { padding-left: 1.5rem; }
+.steps li { padding-left: .35rem; }
+.steps li::marker { color: var(--blue); font-weight: 800; }
+.steps p { margin: 0; }
+.priceCard { display: flex; flex-direction: column; align-items: flex-start; }
+.priceCard.main { border-color: var(--blue); }
+.priceMain { font-size: 1.3rem; font-weight: 800; margin-bottom: .6rem; }
+.priceBtn { margin-top: auto; }
+.priceNote { font-size: .9rem; }
+details { border-bottom: 1px solid var(--border); }
+summary { padding: .85rem .25rem; font-weight: 700; cursor: pointer; }
+details p { padding: 0 .4rem 1rem; }
+footer { padding-block: 1.5rem; color: var(--muted); font-size: .875rem; }
+.prose { max-width: 48rem; }
+.prose section { padding-block: 1.5rem; }
+.prose section + section { border-top: 1px solid var(--border); }
+@media (max-width: 34rem) {
+  .actions > a, .split > a { width: 100%; }
+}
+@media (min-width: 48rem) {
+  .hero-grid { grid-template-columns: 1.45fr 1fr; gap: 3rem; }
+  .split { grid-template-columns: 1fr auto; }
+  .cards, .priceGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+}

@@ -1,66 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://furusaposaitama.com/</loc>
+    <loc>https://furusapojapan.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/diagnosis.html</loc>
+    <loc>https://furusapojapan.com/diagnosis.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/application.html</loc>
+    <loc>https://furusapojapan.com/application.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/business.html</loc>
+    <loc>https://furusapojapan.com/business.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/blog/</loc>
+    <loc>https://furusapojapan.com/blog/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/blog/registration-guide.html</loc>
+    <loc>https://furusapojapan.com/blog/registration-guide.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/blog/required-documents.html</loc>
+    <loc>https://furusapojapan.com/blog/required-documents.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/blog/small-business.html</loc>
+    <loc>https://furusapojapan.com/blog/small-business.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/blog/product-photography.html</loc>
+    <loc>https://furusapojapan.com/blog/product-photography.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/blog/catch-copy.html</loc>
+    <loc>https://furusapojapan.com/blog/catch-copy.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/blog/pricing-donation.html</loc>
+    <loc>https://furusapojapan.com/blog/pricing-donation.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://furusaposaitama.com/blog/saitama-city-gifts.html</loc>
+    <loc>https://furusapojapan.com/blog/saitama-city-gifts.html</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url><loc>https://furusaposaitama.com/furusato-nozei-jigyosha-toroku.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://furusaposaitama.com/service/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://furusapojapan.com/furusato-nozei-jigyosha-toroku.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://furusapojapan.com/service/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://furusapojapan.com/municipalities/saitama-city/</loc></url>
 </urlset>
